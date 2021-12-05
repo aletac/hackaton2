@@ -1,11 +1,14 @@
 package com.hackaton.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * Esta clase representa a la entidad Usuario
  * @author Grupo hackaton Edgar, Elías, Adolfo, Jorge, Juan
@@ -54,9 +57,34 @@ public class Usuario implements Serializable {
 
 
 
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "experiencia")
+    @JsonIgnoreProperties({"usuario"})
+    /**
+     * Reservaciones asociadas con la bicileta
+     */
+    public List<Experiencia> experiencias;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id_ciudad")
+    private Ciudad usuario;
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "tipotransporte")
+    @JsonIgnoreProperties({"usuario"})
+    public List<TipoTransporte> tipoTransportes;
 
+    public Ciudad getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(Ciudad usuario) {
+        this.usuario = usuario;
+    }
 
 
 }
+
+
+
+
+
+
+

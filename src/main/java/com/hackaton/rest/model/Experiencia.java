@@ -1,5 +1,6 @@
 package com.hackaton.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,4 +32,21 @@ public class Experiencia implements Serializable {
      * calificación
      */
     private Integer califica;
+
+    @ManyToOne
+    @JoinColumn(name = "experiencia_id_usuario")
+    private Usuario experiencia;
+
+    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="experiencia")
+    @JsonIgnoreProperties("experiencia")
+    private Ruta ruta;
+
+
+    public Usuario getExperiencia() {
+        return experiencia;
+    }
+
+    public void setExperiencia(Usuario experiencia) {
+        this.experiencia = experiencia;
+    }
 }

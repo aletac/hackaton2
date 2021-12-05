@@ -1,5 +1,6 @@
 package com.hackaton.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,4 +21,11 @@ public class Ruta {
     private Integer tiempoReal;
     private Integer tiempoEstimado;
     private Integer costo;
+
+    @OneToOne
+    @JoinColumn(name="idExp")
+    @JsonIgnoreProperties("ruta")
+    private Experiencia experiencia;
+
+
 }

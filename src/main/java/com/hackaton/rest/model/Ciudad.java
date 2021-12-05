@@ -1,11 +1,14 @@
 package com.hackaton.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * Esta clase representa a la entidad Ciudad
  * @author Grupo hackaton Edgar, Elías, Adolfo, Jorge, Juan
@@ -27,4 +30,11 @@ public class Ciudad implements Serializable {
      * Ciudad
      */
     private String Ciudad;
+
+     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "usuario")
+    @JsonIgnoreProperties({"ciudad"})
+
+
+
+    private List<Usuario> usuarios;
 }
