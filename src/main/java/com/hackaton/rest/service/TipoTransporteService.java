@@ -9,20 +9,38 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Esta clase define la lógica de negocio de la Entidad TipoTransporte.
+ * @author Grupo hackaton Edgar, Elías, Adolfo, Jorge, Juan
+ */
 @Service
 public class TipoTransporteService {
     @Autowired
     private TipoTransporteRepository tipoTransporteRepository;
 
+    /**
+     *
+     * @return lista de tipo de transporte
+     */
     public List<TipoTransporte> getAll(){
         return tipoTransporteRepository.getAll();
 
     }
+
+    /**
+     *
+     * @param id
+     * @return transporte por id
+     */
     public Optional<TipoTransporte> getIdTransporte(long id) {
         return tipoTransporteRepository.getidTipoTransporte(id);
     }
 
+    /**
+     *
+     * @param tipoTransporte
+     * @return guarda un tipo de transporte
+     */
     public TipoTransporte save(TipoTransporte tipoTransporte) {
         if (tipoTransporte.getIdTransporte() == null) {
             return tipoTransporteRepository.save(tipoTransporte);
@@ -36,6 +54,11 @@ public class TipoTransporteService {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return elimina tipo de transporte
+     */
     public boolean deleteTipoTransporte(long id) {
 
         Optional<TipoTransporte> tipotrans = getIdTransporte(id);
@@ -49,24 +72,9 @@ public class TipoTransporteService {
     }
 
     /**
-     *   private Long idUsuario;
-     *     private Long documento;
-     *     private String nombre;
-     *     private Integer edad;
-     *     private String genero;
-     *     private Integer telefono;
-     *     private String email;
-     * @param usuario
-     * @return
-     */
-
-    /**
-     * private Long idTransporte;
-     *     private String tipo;
-     *     private String tipoVehiculo;
-     *     private String empresa;
+     *
      * @param tipoTransporte
-     * @return
+     * @return actualiza un transporte
      */
     public TipoTransporte update(TipoTransporte tipoTransporte) {
         if (tipoTransporte.getIdTransporte() != null) {

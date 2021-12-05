@@ -1,7 +1,6 @@
 package com.hackaton.rest.service;
 
 import com.hackaton.rest.model.Ciudad;
-import com.hackaton.rest.model.TipoTransporte;
 import com.hackaton.rest.repository.CiudadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,19 +8,39 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Esta clase define la lógica de negocio de la Entidad Ciudad.
+ * @author Grupo hackaton Edgar, Elías, Adolfo, Jorge, Juan
+ */
 @Service
 public class CiudadService {
     @Autowired
+
     private CiudadRepository ciudadRepository;
 
+    /**
+     *
+     * @return lista de ciudades
+     */
     public List<Ciudad> getAll(){
         return ciudadRepository.getAll();
 
     }
+
+    /**
+     *
+     * @param id
+     * @return ciudad por id
+     */
     public Optional<Ciudad> getIdCiudad(long id) {
         return ciudadRepository.getIdCiudad(id);
     }
 
+    /**
+     *
+     * @param ciudad
+     * @return guarda la ciudad
+     */
     public Ciudad save(Ciudad ciudad) {
         if (ciudad.getIdCiudad() == null) {
             return ciudadRepository.save(ciudad);
@@ -35,6 +54,11 @@ public class CiudadService {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return elimina la ciudad
+     */
     public boolean deleteCiudad(long id) {
 
         Optional<Ciudad> ciudad1 = getIdCiudad(id);
@@ -48,24 +72,9 @@ public class CiudadService {
     }
 
     /**
-     *   private Long idUsuario;
-     *     private Long documento;
-     *     private String nombre;
-     *     private Integer edad;
-     *     private String genero;
-     *     private Integer telefono;
-     *     private String email;
-     * @param usuario
-     * @return
-     */
-
-    /**
-     * private Long idTransporte;
-     *     private String tipo;
-     *     private String tipoVehiculo;
-     *     private String empresa;
-     * @param tipoTransporte
-     * @return
+     *
+     * @param ciudad
+     * @return actualiza la ciudad
      */
     public Ciudad update(Ciudad ciudad) {
         if (ciudad.getIdCiudad() != null) {

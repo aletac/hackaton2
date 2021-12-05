@@ -32,15 +32,23 @@ public class Experiencia implements Serializable {
      * calificación
      */
     private Integer califica;
-
+    /**
+     * Relaciones entre entidades
+     */
     @ManyToOne
     @JoinColumn(name = "documento")
     @JsonIgnoreProperties({"experiencias","rutas","tipoTransporte"})
+    /**
+     * usuarios asociados
+     */
     private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "idRuta")
     @JsonIgnoreProperties({"experiencias","rutas"})
+    /**
+     * rutas
+     */
     private Ruta ruta;
 
 }

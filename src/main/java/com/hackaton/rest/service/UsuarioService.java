@@ -7,20 +7,38 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Esta clase define la lógica de negocio de la Entidad Usuario.
+ * @author Grupo hackaton Edgar, Elías, Adolfo, Jorge, Juan
+ */
 @Service
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    /**
+     *
+     * @return lista de usuarios
+     */
     public List<Usuario> getAll(){
         return usuarioRepository.getAll();
 
     }
+
+    /**
+     *
+     * @param id
+     * @return usuario por id
+     */
     public Optional<Usuario> getUsuario(long id) {
         return usuarioRepository.getUsuario(id);
     }
 
+    /**
+     *
+     * @param usuario
+     * @return guarda el usuario
+     */
     public Usuario save(Usuario usuario) {
         if (usuario.getIdUsuario() == null) {
             return usuarioRepository.save(usuario);
@@ -34,6 +52,11 @@ public class UsuarioService {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return elimina usuario
+     */
     public boolean deleteUsuario(long id) {
 
         Optional<Usuario> usuario = getUsuario(id);
@@ -47,15 +70,9 @@ public class UsuarioService {
     }
 
     /**
-     *   private Long idUsuario;
-     *     private Long documento;
-     *     private String nombre;
-     *     private Integer edad;
-     *     private String genero;
-     *     private Integer telefono;
-     *     private String email;
+     *
      * @param usuario
-     * @return
+     * @return actualiza usuario
      */
     public Usuario update(Usuario usuario) {
         if (usuario.getIdUsuario() != null) {

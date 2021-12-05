@@ -1,28 +1,43 @@
 package com.hackaton.rest.service;
 
-import com.hackaton.rest.model.Ciudad;
 import com.hackaton.rest.model.Ruta;
-import com.hackaton.rest.repository.CiudadRepository;
 import com.hackaton.rest.repository.RutaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Esta clase define la lógica de negocio de la Entidad Ruta.
+ * @author Grupo hackaton Edgar, Elías, Adolfo, Jorge, Juan
+ */
 @Service
 public class RutaService {
     @Autowired
     private RutaRepository rutaRepository;
 
+    /**
+     *
+     * @return lista de rutas
+     */
     public List<Ruta> getAll(){
         return rutaRepository.getAll();
 
     }
+
+    /**
+     * @param id
+     * @return ruta por id
+     */
     public Optional<Ruta> getIdRuta(long id) {
         return rutaRepository.getIdRuta(id);
     }
 
+    /**
+     *
+     * @param ruta
+     * @return guaraa una ruta
+     */
     public Ruta save(Ruta ruta) {
         if (ruta.getIdRuta() == null) {
             return rutaRepository.save(ruta);
@@ -36,6 +51,11 @@ public class RutaService {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return elimina una ruta
+     */
     public boolean deleteRuta(long id) {
 
         Optional<Ruta> ruta1 = getIdRuta(id);
@@ -49,7 +69,11 @@ public class RutaService {
     }
 
 
-
+    /**
+     *
+     * @param ruta
+     * @return actualiza una ruta
+     */
     public Ruta update(Ruta ruta) {
         if (ruta.getIdRuta() != null) {
             Optional<Ruta> ruta1 = rutaRepository.getIdRuta(ruta.getIdRuta());
@@ -77,11 +101,3 @@ public class RutaService {
         return ruta;
     }
 }
-/**
- * private Long idRuta;
- *     private String origen;
- *     private String destino;
- *     private Integer tiempoReal;
- *     private Integer tiempoEstimado;
- *     private Integer costo;
- */

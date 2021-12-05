@@ -44,7 +44,7 @@ public class Usuario implements Serializable {
      */
     private String genero;
     /**
-     * telefono usuario
+     * teléfono usuario
      */
     private Integer telefono;
     /**
@@ -57,22 +57,28 @@ public class Usuario implements Serializable {
     private String contrasena;
 
 
-
+    /**
+     * relaciones
+     */
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "usuario")
     @JsonIgnoreProperties({"usuario","tipoTransporte"})
-    /**
-     * Reservaciones asociadas con la bicileta
-     */
+
     public List<Experiencia> experiencias;
 
     @ManyToOne
     @JoinColumn(name = "idCiudad")
     @JsonIgnoreProperties({"usuarios","rutas"})
+    /**
+     * ciudades
+     */
     private Ciudad ciudad;
 
     @ManyToOne
     @JoinColumn(name = "idTransporte")
     @JsonIgnoreProperties({"usuarios","rutas"})
+    /**
+     * tipo de transporte
+     */
     private TipoTransporte tipoTransporte;
 
 
