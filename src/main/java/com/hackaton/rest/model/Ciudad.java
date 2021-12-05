@@ -32,10 +32,10 @@ public class Ciudad implements Serializable {
     private String Ciudad;
 
      @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "ciudad")
-    @JsonIgnoreProperties({"ciudad"})
+    @JsonIgnoreProperties({"ciudad","experiencias","tipoTransporte"})
     private List<Usuario> usuarios;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="ciudad")
-    @JsonIgnoreProperties("ciudad")
+    @JsonIgnoreProperties({"ciudad","experiencias"})
     private List<Ruta> rutas;
 }

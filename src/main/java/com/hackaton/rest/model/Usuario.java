@@ -29,6 +29,7 @@ public class Usuario implements Serializable {
     /**
      * documento usuario
      */
+
     private Long documento;
     /**
      * nombre usuario

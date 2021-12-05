@@ -34,7 +34,7 @@ public class Experiencia implements Serializable {
     private Integer califica;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario")
+    @JoinColumn(name = "documento")
     @JsonIgnoreProperties({"experiencias","rutas","tipoTransporte"})
     private Usuario usuario;
 
