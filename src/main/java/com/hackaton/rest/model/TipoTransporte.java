@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name ="TipoTransporte")
@@ -21,16 +22,13 @@ public class TipoTransporte implements Serializable {
     private String tipoVehiculo;
     private String empresa;
 
-    @ManyToOne
-    @JoinColumn(name = "tipotransporte_id_usuario")
-    @JsonIgnoreProperties("tipotransporte")
-    private Usuario tipotransporte;
 
-    public Usuario getTipotransporte() {
-        return tipotransporte;
-    }
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "tipoTransporte")
+    @JsonIgnoreProperties({"tipoTransportes"})
+    private List<Usuario> usuarios;
 
-    public void setTipotransporte(Usuario tipotransporte) {
-        this.tipotransporte = tipotransporte;
-    }
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="tipoTransporte")
+    @JsonIgnoreProperties("tipoTransportes")
+    private List<Ruta> rutas;
+
 }

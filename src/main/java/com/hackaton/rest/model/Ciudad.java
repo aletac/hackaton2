@@ -31,10 +31,11 @@ public class Ciudad implements Serializable {
      */
     private String Ciudad;
 
-     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "usuario")
+     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "ciudad")
     @JsonIgnoreProperties({"ciudad"})
-
-
-
     private List<Usuario> usuarios;
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="ciudad")
+    @JsonIgnoreProperties("ciudad")
+    private List<Ruta> rutas;
 }

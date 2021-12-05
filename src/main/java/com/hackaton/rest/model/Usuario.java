@@ -65,19 +65,15 @@ public class Usuario implements Serializable {
     public List<Experiencia> experiencias;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id_ciudad")
-    private Ciudad usuario;
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "tipotransporte")
-    @JsonIgnoreProperties({"usuario"})
-    public List<TipoTransporte> tipoTransportes;
+    @JoinColumn(name = "idCiudad")
+    @JsonIgnoreProperties("usuarios")
+    private Ciudad ciudad;
 
-    public Ciudad getUsuario() {
-        return usuario;
-    }
+    @ManyToOne
+    @JoinColumn(name = "idTransporte")
+    @JsonIgnoreProperties("usuarios")
+    private TipoTransporte tipoTransporte;
 
-    public void setUsuario(Ciudad usuario) {
-        this.usuario = usuario;
-    }
 
 
 }

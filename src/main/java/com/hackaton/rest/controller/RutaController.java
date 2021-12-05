@@ -1,5 +1,6 @@
-package com.hackaton.rest.model;
+package com.hackaton.rest.controller;
 
+import com.hackaton.rest.model.Ruta;
 import com.hackaton.rest.service.CiudadService;
 import com.hackaton.rest.service.RutaService;
 import org.springframework.beans.factory.annotation.Autowired;

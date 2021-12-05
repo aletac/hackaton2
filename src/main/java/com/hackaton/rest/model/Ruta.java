@@ -27,5 +27,13 @@ public class Ruta {
     @JsonIgnoreProperties("ruta")
     private Experiencia experiencia;
 
+    @ManyToOne
+    @JoinColumn(name = "idCiudad")
+    private Ciudad ciudad;
+
+    @ManyToOne
+    @JoinColumn(name="idTransporte")
+    @JsonIgnoreProperties("rutas")
+    private TipoTransporte tipoTransporte;
 
 }
