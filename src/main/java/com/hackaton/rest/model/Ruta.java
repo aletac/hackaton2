@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Ruta")
@@ -22,18 +23,21 @@ public class Ruta {
     private Integer tiempoEstimado;
     private Integer costo;
 
-    @OneToOne
-    @JoinColumn(name="idExp")
-    @JsonIgnoreProperties("ruta")
-    private Experiencia experiencia;
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "ruta")
+    @JsonIgnoreProperties({"rutas","usuario"})
+
+
+    private List<Experiencia> experiencias;
 
     @ManyToOne
     @JoinColumn(name = "idCiudad")
+    @JsonIgnoreProperties({"rutas","usuarios"})
+
     private Ciudad ciudad;
 
     @ManyToOne
     @JoinColumn(name="idTransporte")
-    @JsonIgnoreProperties("rutas")
+    @JsonIgnoreProperties({"rutas","usuarios"})
     private TipoTransporte tipoTransporte;
 
 }

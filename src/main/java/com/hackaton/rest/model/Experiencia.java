@@ -34,19 +34,13 @@ public class Experiencia implements Serializable {
     private Integer califica;
 
     @ManyToOne
-    @JoinColumn(name = "experiencia_id_usuario")
-    private Usuario experiencia;
+    @JoinColumn(name = "idUsuario")
+    @JsonIgnoreProperties({"experiencias","rutas","tipoTransporte"})
+    private Usuario usuario;
 
-    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="experiencia")
-    @JsonIgnoreProperties("experiencia")
+    @ManyToOne
+    @JoinColumn(name = "idRuta")
+    @JsonIgnoreProperties({"experiencias","rutas"})
     private Ruta ruta;
 
-
-    public Usuario getExperiencia() {
-        return experiencia;
-    }
-
-    public void setExperiencia(Usuario experiencia) {
-        this.experiencia = experiencia;
-    }
 }
