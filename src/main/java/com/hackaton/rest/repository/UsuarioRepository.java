@@ -32,7 +32,7 @@ public class UsuarioRepository {
      */
     public Optional<Usuario> getUsuario(long documento){
 
-        return usuarioCrudRepository.findById(documento);
+        return usuarioCrudRepository.findByDocumento(documento);
     }
 
     /**
@@ -52,4 +52,34 @@ public class UsuarioRepository {
         usuarioCrudRepository.delete(usuario);
     }
 
+    /**
+     *
+     * @param email
+     * @return boolean validación de existencia de email
+     */
+    public boolean emailExists(String email) {
+        Optional<Usuario> usuario = usuarioCrudRepository.findByEmail(email);
+
+        return !usuario.isEmpty();
+    }
+
+    /**
+     *
+     * @param email
+     * @param contrasena
+     * @return busqueda por email y contraseña
+     */
+    public Optional<Usuario> autenticateUser(String email, String contrasena) {
+        return usuarioCrudRepository.findByEmailAndContrasena(email, contrasena);
+    }
+
+    /**
+     *
+     * @param documento
+     * @return booleano de validación de existencia de documento
+     */
+    public boolean documentoExists(Long documento) {
+        Optional<Usuario> usuario = usuarioCrudRepository.findByDocumento(documento);
+        return !usuario.isEmpty();
+    }
 }

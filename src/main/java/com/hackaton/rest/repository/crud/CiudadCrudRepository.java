@@ -8,4 +8,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author Grupo hackaton Edgar, Elías, Adolfo, Jorge, Juan
  */
 public interface CiudadCrudRepository extends CrudRepository<Ciudad, Long> {
+
 }

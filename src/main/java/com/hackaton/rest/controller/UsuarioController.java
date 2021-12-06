@@ -31,24 +31,38 @@ public class UsuarioController {
     public List<Usuario> getAll(){
         return usuarioService.getAll();
     }
-    @GetMapping("/{id}")
-    public Optional<Usuario> getUsuario(@PathVariable("id") int id) {
-        return usuarioService.getUsuario(id);
+    @GetMapping("/{documento}")
+    public Optional<Usuario> getUsuario(@PathVariable("documento") long documento) {
+        return usuarioService.getUsuario(documento);
     }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario save(@RequestBody Usuario usuario) {
         return usuarioService.save(usuario);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{documento}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean deleteUsuario(@PathVariable int id) {
-        return usuarioService.deleteUsuario(id);
+    public boolean deleteUsuario(@PathVariable long documento) {
+        return usuarioService.deleteUsuario(documento);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario updateUsuario(@RequestBody Usuario usuario){
         return usuarioService.update(usuario);
+    }
+
+    @GetMapping("/emailexist/{email}")
+    public boolean emailExists(@PathVariable("email") String email) {
+        return usuarioService.emailExists(email);
+    }
+
+    @GetMapping("/{email}/{password}")
+    public Usuario autenticateUser(@PathVariable("email") String email, @PathVariable("password") String contrasena) {
+        return usuarioService.autenticateUser(email, contrasena);
+    }
+    @GetMapping("/documentoexist/{documento}")
+    public boolean emailExists(@PathVariable("documento") Long documento) {
+        return usuarioService.documentoExists(documento);
     }
 }

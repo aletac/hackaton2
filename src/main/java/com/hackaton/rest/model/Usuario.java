@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
     /**
      * documento usuario
      */
-
+    @Column(unique=true)
     private Long documento;
     /**
      * nombre usuario
@@ -50,11 +50,16 @@ public class Usuario implements Serializable {
     /**
      * email usuario
      */
+    @Column(unique=true)
     private String email;
     /**
      * password usuario
      */
     private String contrasena;
+    /**
+     * rol usuario
+     */
+    private String role;
 
 
     /**
