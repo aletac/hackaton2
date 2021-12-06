@@ -14,7 +14,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api/Usuario")
-@CrossOrigin("*")
+@CrossOrigin (origins= "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 /**
  * Esta clase representa el controlador del usuario
  */
