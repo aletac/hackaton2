@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -36,6 +37,10 @@ public class Usuario implements Serializable {
      */
     private String nombre;
     /**
+     * apellido usuario
+     */
+    private String apellido;
+    /**
      * edad usuario
      */
     private Integer edad;
@@ -46,7 +51,7 @@ public class Usuario implements Serializable {
     /**
      * teléfono usuario
      */
-    private Integer telefono;
+    private BigInteger telefono;
     /**
      * email usuario
      */

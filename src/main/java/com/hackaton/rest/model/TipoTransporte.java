@@ -29,10 +29,7 @@ public class TipoTransporte implements Serializable {
      * tipo de transporte
      */
     private String tipo;
-    /**
-     * tipo de vehículo
-     */
-    private String tipoVehiculo;
+
     /**
      * empresa del vehículo
      */

@@ -83,9 +83,7 @@ public class TipoTransporteService {
                 if (tipoTransporte.getTipo() != null) {
                     tipotrans1.get().setTipo(tipoTransporte.getTipo());
                 }
-                if (tipoTransporte.getTipoVehiculo()!=null){
-                    tipotrans1.get().setTipoVehiculo(tipoTransporte.getTipoVehiculo());
-                }
+
                 if (tipoTransporte.getEmpresa()!=null){
                     tipotrans1.get().setEmpresa(tipoTransporte.getEmpresa());
                 }

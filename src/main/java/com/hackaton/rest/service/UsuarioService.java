@@ -84,6 +84,9 @@ public class UsuarioService {
                 if (usuario.getNombre()!=null){
                     usuario1.get().setNombre(usuario.getNombre());
                 }
+                if (usuario.getApellido()!=null){
+                    usuario1.get().setApellido(usuario.getApellido());
+                }
                 if (usuario.getEdad()!=null){
                     usuario1.get().setEdad(usuario.getEdad());
                 }
