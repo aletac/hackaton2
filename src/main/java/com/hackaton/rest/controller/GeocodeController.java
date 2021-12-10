@@ -22,7 +22,7 @@ public class GeocodeController {
                 .url("https://google-maps-geocoding.p.rapidapi.com/geocode/json?latlng=4.630472%2C-74.141389&language=en")
                 .get()
                 .addHeader("x-rapidapi-host", "google-maps-geocoding.p.rapidapi.com")
-                .addHeader("x-rapidapi-key", "e183818913mshe97aa8862df0942p1550eajsn6bfb6caff241")
+                .addHeader("x-rapidapi-key", key)
                 .build();
 
         ResponseBody responseBody = client.newCall(request).execute().body();
